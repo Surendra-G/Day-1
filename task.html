@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Tasks</title>
+</head>
+<body>
+    <h1>Lists Of The Tasks</h1>
+    <ul id="list">
+    </ul>
+    <form>
+        <input type="text" placeholder="New Tasks" id="fillup">
+        <input id="submitbtn" type="submit">
+    </form>
+    <Script>
+        document.querySelector('#submitbtn').disabled = true;
+        document.querySelector('#fillup').onkeyup = function(){
+            if (document.querySelector('#fillup').value.length > 0){
+                document.querySelector('#submitbtn').disabled = false;
+            } else{
+                document.querySelector('#submitbtn').disabled = true;
+            };
+        }; 
+            document.querySelector('form').onsubmit = function(){
+            const items = document.querySelector('#fillup').value;
+
+            const li = document.createElement('li');
+            li.innerHTML = items;
+
+            document.querySelector('#list').append(li);
+            document.querySelector('#fillup').value = '';
+            document.querySelector('#submitbtn').disabled = true;
+
+            return false;
+        };
+    </Script>
+</body>
+</html>
